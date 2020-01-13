@@ -3,6 +3,8 @@ package com.fh.service;
 import com.fh.bean.po.StudentPo;
 import com.fh.util.PageBean;
 
+import java.util.List;
+
 public interface StuService {
     void queryPageList(PageBean<StudentPo> page);
 
@@ -13,4 +15,6 @@ public interface StuService {
     StudentPo queryStuById(Integer id);
 
     void updateStu(StudentPo studentPo);
+
+    List<StudentPo> queryStudentList();
 }

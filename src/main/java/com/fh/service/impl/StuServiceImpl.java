@@ -44,4 +44,9 @@ public class StuServiceImpl implements StuService {
     public void updateStu(StudentPo studentPo) {
         stuDao.updateById(studentPo);
     }
+
+    @Override
+    public List<StudentPo> queryStudentList() {
+        return stuDao.selectList(null);
+    }
 }

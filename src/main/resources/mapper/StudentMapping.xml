@@ -12,7 +12,5 @@
         where isDel=1
         limit #{start},#{length}
     </select>
-   <!-- <select id="queryStuById" resultType="com.fh.bean.po.StudentPo" parameterType="int">
-         select *from msh_student where id=#{id}
-    </select>-->
+
 </mapper>

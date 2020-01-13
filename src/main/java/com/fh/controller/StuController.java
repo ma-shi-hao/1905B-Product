@@ -3,6 +3,7 @@ package com.fh.controller;
 import com.fh.bean.po.StudentPo;
 import com.fh.service.StuService;
 import com.fh.util.AliyunOssUtil;
+import com.fh.util.ExportExcel;
 import com.fh.util.PageBean;
 import com.fh.util.xiazai;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -62,5 +66,19 @@ public class StuController {
     public StudentPo updateStu(StudentPo studentPo){
         stuService.updateStu(studentPo);
         return studentPo;
+    }
+    @RequestMapping("importExcel")
+    public String importExcel() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, FileNotFoundException {
+        List<StudentPo> studentList = stuService.queryStudentList();
+        if (studentList.size() == 0){
+            return "500";
+        }
+        for (int i = 0; i < studentList.size(); i++) {
+            if (studentList.get(i).getIsDel() == 2){
+                return "400";
+            }
+        }
+        ExportExcel.exportExcel(studentList, StudentPo.class);
+        return "200";
     }
 }
