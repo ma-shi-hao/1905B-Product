@@ -2,10 +2,7 @@ package com.fh.controller;
 
 import com.fh.bean.po.StudentPo;
 import com.fh.service.StuService;
-import com.fh.util.AliyunOssUtil;
-import com.fh.util.ExportExcel;
-import com.fh.util.PageBean;
-import com.fh.util.xiazai;
+import com.fh.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -80,5 +78,10 @@ public class StuController {
         }
         ExportExcel.exportExcel(studentList, StudentPo.class);
         return "200";
+    }
+    @RequestMapping("test")
+    public void downexcel(HttpServletResponse response){
+        List<StudentPo> list=stuService.querylistStudent();
+        ExceUtils.excelUtil(list,response);
     }
 }

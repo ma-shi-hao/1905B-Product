@@ -49,4 +49,9 @@ public class StuServiceImpl implements StuService {
     public List<StudentPo> queryStudentList() {
         return stuDao.selectList(null);
     }
+
+    @Override
+    public List<StudentPo> querylistStudent() {
+        return stuDao.selectList(null);
+    }
 }

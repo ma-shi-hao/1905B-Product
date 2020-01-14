@@ -17,4 +17,6 @@ public interface StuService {
     void updateStu(StudentPo studentPo);
 
     List<StudentPo> queryStudentList();
+
+    List<StudentPo> querylistStudent();
 }
