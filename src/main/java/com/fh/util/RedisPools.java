@@ -4,7 +4,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
-public class RedisPools {
+public class  RedisPools {
     private static JedisPool jedisPool;
 
     private RedisPools(){}

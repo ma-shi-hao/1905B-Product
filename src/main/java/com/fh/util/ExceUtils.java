@@ -51,6 +51,7 @@ public class ExceUtils {
         //处理数据信息
         for (int i = 0; i <list.size() ; i++) {
             Object o1 = list.get(i);
+
             XSSFRow row1 = sheet.createRow(i + 1);
             int celln=0;
             for (int j = 0; j <declaredFields.length ; j++) {
